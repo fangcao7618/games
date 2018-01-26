@@ -20,3 +20,13 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # games
+
+
+vue解绑事件
+
+https://www.jianshu.com/p/3df7ef1f870e
+
+http://www.html-js.com/article/1199
+
+
+看深度学习资料
