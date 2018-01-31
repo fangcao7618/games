@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="./src/assets/js/zepto.min.js"></script>
+    <title>div块跟随手指拖动</title>
+</head>
+
+<body>
+    <div id="id"></div>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            position: absolute;
+            left: 0px;
+            top: 100px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        let _x_start, _y_start, _x_move, _y_move, _x_end, _y_end, left_start, top_start;
+        const one = (e) => {
+            _x_start = e.touches[0].pageX || e.clientX;
+            _y_start = e.touches[0].pageY;
+            // console.log("start",_x_start)
+            left_start = $("#id").css("left");
+            top_start = $("#id").css("top");
+        };
+        const two = (e) => {
+            // console.log(e);
+            _x_move = e.touches[0].pageX;
+            _y_move = e.touches[0].pageY;
+            // console.log("move",_x_move)
+            $("#id").css("left", parseFloat(_x_move) - parseFloat(_x_start) + parseFloat(left_start) + "px");
+            $("#id").css("top", parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start) + "px");
+            // console.log(parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start));
+        };
+        const three = (e) => {
+            var _x_end = e.changedTouches[0].pageX;
+            var _y_end = e.changedTouches[0].pageY;
+            // console.log("end",_x_end)
+        };
+        document.getElementById("id").addEventListener("touchstart", one);
+        document.getElementById("id").addEventListener("touchmove", two);
+        document.getElementById("id").addEventListener("touchend", three);
+        //阻止浏览器下拉事件
+        $('body').on('touchmove', function (event) {
+            event.preventDefault();
+        });
+        // or
+        // document.addEventListener('touchmove', function(e){e.preventDefault()}, false);
+
+    </script>
+</body>
+
+</html>

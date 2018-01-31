@@ -1,20 +1,20 @@
 <template>
     <div id="app">
-        <Move />
-        <Drag />
+        <!-- <Move /> -->
+        <!-- <Drag /> -->
         <router-view/>
     </div>
 </template>
 
 <script>
-import Move from '@/components/Move';
-import Drag from '@/components/Drag';
+// import Move from '@/components/Move';
+// import Drag from '@/components/Drag';
 
 export default {
     name: 'App',
     components: {
-        Move,
-        Drag,
+        // Move,
+        // Drag,
     },
 };
 </script>

@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>yzt-game</title>
-  </head>
-  <body>
+    <meta name="description" content="平安金融科技">
+    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="x5-orientation" content="portrait" />
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <!-- 添加到主屏后的标题（iOS 6 新增） -->
+    <meta name="apple-mobile-web-app-title" content="平安金融科技">
+    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+    <!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>一账通2017财富报告</title>
+    <!-- 外部页面添加埋点插件 -->
+    <!-- 在 a 标签上添加 otype 和 otitle 即可 -->
+    <script language="javascript" type="text/javascript">
+    function loadWTScript(a, b) {
+        var c = document.createElement('script');
+        c.type = 'text/javascript',
+            c.async = !0,
+            c.src = a,
+            dcsReady(c, b),
+            document.getElementsByTagName('head')[0].appendChild(c)
+    };
+
+    function dcsReady(a, b) {
+        a.readyState ? a.onreadystatechange = function() {
+            ('loaded' == a.readyState || 'complete' == a.readyState) && (a.onreadystatechange = null, b())
+        } : a.onload = function() {
+            b();
+        }
+    };
+
+    loadWTScript(window.location.protocol.indexOf('https:') == 0 ? 'https://pa-ssl.pingan.com/app_js/sdc/prd/sdc9.js' : 'http://www.pingan.com/app_js/sdc/prd/sdc9.js', function() {
+        if (typeof(_tag) != 'undefined') {
+            _tag.dcsid = 'dcsii7safu620dmx9xh73688i_1h2b';
+            _tag.DCSext.platform = 'pinganweb';
+            var s = _tag.dcsGetIdAsync();
+            if (s)
+                dcsReady(s, function() {
+                    _tag.dcsCollect()
+                });
+            else
+                _tag.dcsCollect();
+        }
+    });
+    </script>
+</head>
+
+<body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+    <script type="text/javascript">
+        document.ontouchmove = function docuEvent(e) {
+            e.preventDefault();
+        };
+    </script>
+    <script src="static/libs/flexible.js"></script>
+</body>
+
 </html>

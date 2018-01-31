@@ -1,5 +1,11 @@
 <template>
-    <div class="drag" @mousedown="oDragMouseDown" @mousemove="oDragMouseMove" @mouseup="oDragMouseUp">
+    <div
+        class="drag"
+        @mousedown="oDragMouseDown"
+        v-if="unbind"
+        @mousemove="oDragMouseMove"
+        @mouseup="oDragMouseUp"
+    >
     </div>
 </template>
 
@@ -15,6 +21,7 @@ export default {
             x: 0,
             y: 0,
             moveTimer: null, // 运行tween的计时器
+            unbind: true,
         };
     },
     methods: {
@@ -46,10 +53,33 @@ export default {
             oDrag.style.left = `${this.x + this.scrollLeft}px`;
             oDrag.style.top = `${this.y + this.scrollTop}px`;
         },
-        oDragMouseUp(e) {},
+        oDragMouseUp(e) {
+            const events = e || window.event;
+            const oDrag = events.target;
+            // oDrag.onmousemove = null;
+            this.unbind = false;
+            let end,
+                change,
+                step = 1;
+            if (this.x >= (document.documentElement.clientWidth - oDrag.offsetWidth) / 2) {
+                end = document.documentElement.clientWidth - oDrag.offsetWidth;
+                stepMax = Math.floor(end);
+            } else {
+                end = 0;
+                stepMax = Math.floor(this.x);
+            }
+            change = end - this.x;
+            this.moveTimer = setInterval(() => {
+                step++;
+                if (step == stepMax) {
+                    clearInterval(this.moveTimer);
+                    this.moveTimer = null;
+                }
+                oDrag.style.left = `${Tween.Bounce.easeIn(step, x, change, stepMax) + scrollLeft}px`;
+            }, 5);
+        },
     },
-    mounted() {
-    },
+    mounted() {},
 };
 </script>
 
